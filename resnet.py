@@ -102,8 +102,7 @@ def main():
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            if (batch_idx + 1) % 100 == 0:
-                print(
+            print(
                     f' {epoch + 1}/{num_epochs}, {batch_idx + 1}/{total_batch}: {loss.item():.4f}, acc: {acc}')
 
     class UnNormalize(object):
@@ -133,16 +132,6 @@ def main():
         total += images.size(0)
         correct += (preds == labels).sum().item()
 
-        mis_preds_indice = torch.flatten((preds != labels).nonzero())
-        mis_preds = preds[mis_preds_indice]
-        mis_labels = labels[mis_preds_indice]
-        mis_images = images[mis_preds_indice]
-
-        all_mis_preds.extend(mis_preds)
-        all_mis_labels.extend(mis_labels)
-
-        for i in range(mis_images.size(0)):
-            all_mis_images.append(unnormalize(mis_images[i]))
     print(f'{correct}/{total}={correct / total}')
     finish_time = datetime.now()
     print(finish_time - start_time)
