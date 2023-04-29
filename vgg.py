@@ -3,7 +3,6 @@ from torch import nn
 from torchvision import models
 from torchvision import datasets, transforms
 from datetime import datetime
-from torchsummary import summary
 import multiprocessing
 from tqdm import tqdm
 
@@ -103,8 +102,8 @@ def main():
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            if (batch_idx + 1) % 100 == 0:
-                print(
+
+            print(
                     f'{epoch + 1}/{num_epochs}, {batch_idx + 1}/{total_batch}: {loss.item():.4f}, acc: {acc}')
     total = 0
     correct = 0

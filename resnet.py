@@ -102,8 +102,7 @@ def main():
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            if (batch_idx + 1) % 100 == 0:
-                print(
+            print(
                     f' {epoch + 1}/{num_epochs}, {batch_idx + 1}/{total_batch}: {loss.item():.4f}, acc: {acc}')
 
     class UnNormalize(object):
