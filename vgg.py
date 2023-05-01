@@ -108,7 +108,7 @@ def main():
     total = 0
     correct = 0
     with torch.no_grad():
-        for images, labels in tqdm(test_dataloader):
+        for images, labels in test_dataloader:
             images = images.to(device)
             labels = labels.to(device)
             out = vgg(images)
