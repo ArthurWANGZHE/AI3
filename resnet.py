@@ -120,11 +120,8 @@ def main():
     total = 0
     correct = 0
 
-    all_mis_preds = []
-    all_mis_labels = []
-    all_mis_images = []
 
-    for images, labels in tqdm(test_dataloader):
+    for images, labels in test_dataloader:
         images = images.to(device)
         labels = labels.to(device)
         out = model(images)
